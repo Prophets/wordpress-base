@@ -1,0 +1,14 @@
+{
+  "name": "prophets/prophets-wp-base",
+  "type": "wordpress-muplugin",
+  "require": {
+    "php": "^7.1",
+    "composer/installers": "^1.0",
+    "dflydev/dot-access-data": "^2.0.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Prophets\\WPBase\\": "src/"
+    }
+  }
+}
