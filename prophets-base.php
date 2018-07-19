@@ -2,13 +2,9 @@
 /**
  * Plugin Name: Prophets Base
  * Author: Stijn Huyberechts
- * Text Domain: prophets
+ * Text Domain: prophets_base
+ * Code Standard: PSR2
  */
 
-define('PROPHETS_PLUGIN_PATH', __DIR__);
-define('PROPHETS_PLUGIN_URL', plugin_dir_url(__FILE__));
-
-use Prophets\WPBase\Base;
-
-$base = new Base();
-$base->run(WP_ROOT_DIR . '/config/prophets-base');
+define('PROPHETS_BASE_PLUGIN_PATH', __DIR__);
+define('PROPHETS_BASE_PLUGIN_URL', plugin_dir_url(__FILE__));

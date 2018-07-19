@@ -2,17 +2,17 @@
 
 namespace Prophets\WPBase\Actions;
 
-use Prophets\WPBase\Base;
+use Prophets\WPBase\PluginRepository;
 
 class ActionAbstract
 {
     /**
-     * @var Base
+     * @var PluginRepository
      */
-    protected $base;
+    protected $pluginRepository;
 
-    public function __construct(Base $base)
+    public function __construct(PluginRepository $pluginRepository)
     {
-        $this->base = $base;
+        $this->pluginRepository = $pluginRepository;
     }
 }
