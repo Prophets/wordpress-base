@@ -31,7 +31,7 @@ class HookManager
         if (is_array($callable)) {
             $className   = $callable[0];
             $classMethod = $callable[1] ?? 'init';
-            $callable    = [new $className($this), $classMethod];
+            $callable    = [new $className(), $classMethod];
         }
         if (! is_callable($callable)) {
             throw new \InvalidArgumentException('Not a callable hook.');

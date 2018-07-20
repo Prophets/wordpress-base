@@ -16,26 +16,26 @@ class PluginRepository
      */
     protected $plugins;
 
-    /**
-     * App constructor.
-     *
-     * @param bool $init
-     */
-    public function __construct($init = false)
-    {
-        if ($init !== true && self::$instance === null) {
-            self::$instance = new self(true);
-        }
+	/**
+	 * PluginRepository constructor.
+	 */
+    protected function __construct() {}
 
-        return self::$instance;
-    }
+	/**
+	 * Prevent singleton from cloning.
+	 */
+	protected function __clone() {}
 
     /**
      * @return PluginRepository
      */
     public static function getInstance()
     {
-        return new self();
+	    if (static::$instance === null) {
+		    static::$instance = new static();
+	    }
+
+	    return static::$instance;
     }
 
     /**
