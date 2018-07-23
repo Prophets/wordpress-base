@@ -29,9 +29,9 @@ class HookManager
          * @todo make it possible to define constructor arguments
          */
         if (is_array($callable)) {
-            $className   = $callable[0];
+            $class = $callable[0];
             $classMethod = $callable[1] ?? 'init';
-            $callable    = [new $className(), $classMethod];
+            $callable = [is_string($class) ? new $class() : $class, $classMethod];
         }
         if (! is_callable($callable)) {
             throw new \InvalidArgumentException('Not a callable hook.');
