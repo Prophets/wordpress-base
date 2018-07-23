@@ -21,7 +21,7 @@ class HookManager
         if (! isset($hook['name'])) {
             throw new \InvalidArgumentException('Hook name is not defined');
         }
-        $method   = 'add_' . $type;
+        $method = 'add_' . $type;
         $callable = $hook['use'];
 
         /**

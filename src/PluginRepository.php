@@ -16,26 +16,30 @@ class PluginRepository
      */
     protected $plugins;
 
-	/**
-	 * PluginRepository constructor.
-	 */
-    protected function __construct() {}
+    /**
+     * PluginRepository constructor.
+     */
+    protected function __construct()
+    {
+    }
 
-	/**
-	 * Prevent singleton from cloning.
-	 */
-	protected function __clone() {}
+    /**
+     * Prevent singleton from cloning.
+     */
+    protected function __clone()
+    {
+    }
 
     /**
      * @return PluginRepository
      */
     public static function getInstance()
     {
-	    if (static::$instance === null) {
-		    static::$instance = new static();
-	    }
+        if (static::$instance === null) {
+            static::$instance = new static();
+        }
 
-	    return static::$instance;
+        return static::$instance;
     }
 
     /**
@@ -68,7 +72,7 @@ class PluginRepository
      */
     public function getPlugin($alias)
     {
-        if (! isset($this->plugins[$alias])) {
+        if ( ! isset($this->plugins[$alias])) {
             throw new \RuntimeException("Plugin '$alias' is not registered.'");
         }
 
@@ -85,7 +89,7 @@ class PluginRepository
      */
     protected function bootstrapPlugin($alias)
     {
-        if (! isset($this->boostrapped[$alias])) {
+        if ( ! isset($this->boostrapped[$alias])) {
             $this->boostrapped[$alias] = new $this->plugins[$alias];
         }
 

@@ -20,7 +20,8 @@ class Config extends Data implements ArrayAccess
     /**
      * Determine if the given configuration option exists.
      *
-     * @param  string  $key
+     * @param  string $key
+     *
      * @return bool
      */
     public function offsetExists($key)
@@ -31,7 +32,8 @@ class Config extends Data implements ArrayAccess
     /**
      * Get a configuration option.
      *
-     * @param  string  $key
+     * @param  string $key
+     *
      * @return mixed
      */
     public function offsetGet($key)
@@ -42,8 +44,9 @@ class Config extends Data implements ArrayAccess
     /**
      * Set a configuration option.
      *
-     * @param  string  $key
-     * @param  mixed  $value
+     * @param  string $key
+     * @param  mixed $value
+     *
      * @return void
      */
     public function offsetSet($key, $value)
@@ -54,7 +57,8 @@ class Config extends Data implements ArrayAccess
     /**
      * Unset a configuration option.
      *
-     * @param  string  $key
+     * @param  string $key
+     *
      * @return void
      */
     public function offsetUnset($key)
