@@ -47,20 +47,35 @@ class PluginRepository
      *
      * @param $bootstrap
      * @param string $alias
-     * @param string $configPath
+     *
+     * @return $this
      */
-    public function registerPlugin($bootstrap, $alias, $configPath)
+    public function registerPlugin($bootstrap, $alias)
     {
         if (isset($this->plugins[$alias])) {
             throw new \RuntimeException("Plugin '$alias' is already registered.");
         }
         $this->plugins[$alias] = $bootstrap;
 
+        return $this;
+    }
+
+    /**
+     * Register action and filter hooks.
+     *
+     * @param $configPath
+     *
+     * @return $this
+     */
+    public function registerHooks($configPath)
+    {
         $config = new Config(require $configPath);
         $hookManager = new HookManager();
 
         $hookManager->addHooks('action', $config->get('actions', []));
         $hookManager->addHooks('filter', $config->get('filters', []));
+
+        return $this;
     }
 
     /**
@@ -72,7 +87,7 @@ class PluginRepository
      */
     public function getPlugin($alias)
     {
-        if ( ! isset($this->plugins[$alias])) {
+        if (! isset($this->plugins[$alias])) {
             throw new \RuntimeException("Plugin '$alias' is not registered.'");
         }
 
@@ -89,11 +104,10 @@ class PluginRepository
      */
     protected function bootstrapPlugin($alias)
     {
-        if ( ! isset($this->boostrapped[$alias])) {
+        if (! isset($this->boostrapped[$alias])) {
             $this->boostrapped[$alias] = new $this->plugins[$alias];
         }
 
         return $this->boostrapped[$alias];
     }
-
 }
